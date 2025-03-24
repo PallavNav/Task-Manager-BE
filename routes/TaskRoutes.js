@@ -2,6 +2,14 @@ const express = require("express");
 const router = express.Router();
 const Task = require("../models/taskSchema");
 
+router.get("/isLive", async (req, res) => {
+  try {
+    res.send("App is live!!");
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 router.get("/tasks", async (req, res) => {
   try {
     const tasks = await Task.find();
