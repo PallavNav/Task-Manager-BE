@@ -12,7 +12,11 @@ router.get("/isLive", async (req, res) => {
 
 router.get("/tasks", async (req, res) => {
   try {
-    const tasks = await Task.find();
+    const {status, priority} = req.query;
+    let filter = {};
+    if(status) filter.status = status;
+    if(priority) filter.priority = priority;
+    const tasks = await Task.find(filter);
     res.status(200).json(tasks);
   } catch (error) {
     res.status(500).json({ error: error.message });
