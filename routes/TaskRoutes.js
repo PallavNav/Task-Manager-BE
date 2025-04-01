@@ -25,8 +25,8 @@ router.get("/tasks", async (req, res) => {
 
 router.post("/tasks", async (req, res) => {
   try {
-    const { id, title, description, dueDate, priority, status } = req.body;
-    const newTask = new Task({ id, title, description, dueDate, priority, status });
+    const { id, title, description, dueDate, priority, status, operations } = req.body;
+    const newTask = new Task({ id, title, description, dueDate, priority, status, operations });
     await newTask.save();
     res.status(201).json({ message: "Task created successfully", task: newTask });
   } catch (error) {

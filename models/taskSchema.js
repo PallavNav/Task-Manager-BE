@@ -31,6 +31,11 @@ const taskSchema = new mongoose.Schema(
       enum: ["Pending", "Completed"],
       required: true,
     },
+    operations: {
+      type: [String],
+      enum: ["CREATE", "EDIT"],
+      required: true,
+    },
   },
   { collection: "taskList" }
 );
