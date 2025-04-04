@@ -33,7 +33,6 @@ const taskSchema = new mongoose.Schema(
     },
     operations: {
       type: [String],
-      enum: ["CREATE", "EDIT"],
       required: true,
     },
   },
